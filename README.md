@@ -24,17 +24,6 @@ The WebDriverIO tests are run on different platforms like on-prem and BrowserSta
     ```sh
     npm install
     ```
-## About the tests in this repository
-
-This repository contains the following WebdriverIO tests:
-| Module   | Test name                          | Description |
-| ---      | ---                                | --- |
-| E2E      | e2e.spec.js                       | This test scenario verifies successful product purchase lifecycle end-to-end. It demonstrates the [Page Object Model design pattern](https://www.browserstack.com/guide/page-object-model-in-selenium) and is also the default test executed in all the single test run profiles. |
-| Login    | login.spec.js                       | This test verifies the login workflow with different types of valid login users. |
-| Login    | login_data_driven.spec.js             | This test verifies the login for all error cases in a datadriven way |
-| Login    | login_requested.spec.js              | This test verifies that the login page is shown when you access the favourites page with being logged in  |
-| Offers   | offers.spec.js                       | This test mocks the GPS location for Singapore and verifies that the product offers applicable for the Singapore location are shown.   |
-| User     | user.spec.js                        | The first test verifies that existing orders are shown for user: "existing_orders_user". The second test verifies if a user can add product to the favourites. |
 
 ## Test infrastructure environments
 
@@ -80,19 +69,7 @@ This infrastructure points to running the tests on your own machine using simula
     ```sh
   npm run onprem
   ```
-  To run a specific test scenario, use the following command with the additional 'spec' argument:
 
-  ```sh
-  npm run onprem-suite -- -- spec orders
-  ```
-### Run the entire test suite on your own machine
-
-- How to run the test?
-
-  To run the entire test suite on your own machine, use the following command:
-  ```sh
-  npm run onprem-suite
-  ```
 # BrowserStack
 
 [BrowserStack](https://browserstack.com) provides instant access to 2,000+ real mobile devices and browsers on a highly reliable cloud infrastructure that effortlessly scales as testing needs grow.
@@ -144,26 +121,14 @@ In this section, we will run a single test on an Android device on Browserstack.
 
 - How to run the test?
 
-   - To run the default test scenario (e.g. End to End Scenario) on a BrowserStack device, use the following command:
+   - To run the default test scenario (e.g. End to End Scenario) on a BrowserStack Android device, use the following command:
       ```sh
-      npm run bstack-single
+      npm run bstack-single-android
       ```
-  - To run a specific test scenario, use the following command with the additional 'spec' argument:
-    ```sh
-    npm run bstack-suite -- -- spec orders
-    ```
-
-### Run the entire test suite in parallel on a single BrowserStack device
-
-In this section, we will run the tests in parallel on a single device on Browserstack. Refer to `capabilities` object in `resources/conf/wdio-bstack-parallel.conf.js` file to change test capabilities for this configuration.
-
-- How to run the test?
-
-  - To run the entire test suite in parallel on a single BrowserStack device type, use the following command:
-    ```sh
-    npm run bstack-parallel
-    ```
-> Note: By default, this execution would run maximum 2 test threads in parallel on BrowserStack. The parallels can eb modified by updated the `maxInstances` inside `capabilities` object in `resources/conf/wdio-bstack-parallel.conf.js`.
+    - To run the default test scenario (e.g. End to End Scenario) on a BrowserStack iOS device, use the following command:
+      ```sh
+      npm run bstack-single-ios
+      ```
 
 ### Run the entire test suite in parallel on multiple BrowserStack devices
 
@@ -175,43 +140,7 @@ In this section, we will run the tests in parallel on multiple devices on Browse
     ```sh
     npm run bstack-parallel-devices
     ```
-### Mobile application using local or internal environment - Running your tests on BrowserStack using BrowserStackLocal
 
-#### Prerequisites
-
-- Clone the [BrowserStack demo application](https://github.com/browserstack/browserstack-demo-app) repository.
-  ```sh
-  git clone https://github.com/browserstack/browserstack-demo-app
-  ``` 
-- Please follow the README.md on the BrowserStack demo application repository to install and start the dev server on localhost.
-- We will change the response of the `signin` (for the `locked_user`) API endpoint. (File to change: `pages/api/signin.js` line `43`)
-  - The API endpoint respond with a specific error, `Your account has been locked.`.
-  - We will change that to something generic, like: `Something went wrong.`
-- In this section, we will run a single test case that changes the API used in BrowserStack Demo app, in a wat that it interact with you local machine. Refer to the `capabilities` object in `resources/conf/wdio-bstack-local.conf.js` file to change test capabilities for this configuration.
-- Note: You may need to provide additional BrowserStackLocal arguments to successfully connect your localhost environment with BrowserStack infrastructure. (e.g if you are behind firewalls, proxy or VPN).
-- Further details for successfully creating a BrowserStackLocal connection can be found here:
-
-   - [Local Testing with App Automate](https://www.browserstack.com/local-testing/app-automate)
-   - [BrowserStackLocal Java GitHub](https://github.com/browserstack/browserstack-local-java)
-
-### Mobile application using local or internal environment - Run a specific test on BrowserStack using BrowserStackLocal
-
-- How to run the test?
-
-   - To run the default test scenario (e.g. End to End Scenario) on a single BrowserStack device using BrowserStackLocal, use the following command:
-      ```sh
-      npm run bstack-local
-      ```
-### Mobile application using local or internal environment - Run the entire test suite in parallel on multiple BrowserStack devices using BrowserStackLocal
-
-In this section, we will run the test cases on a mobile application using a local or internal environment in parallel on multiple devices on Browserstack. Refer to the `capabilities` object in `resources/conf/wdio-bstack-local-parallel-devices.conf.js` file to change test capabilities for this configuration.
-
-- How to run the test?
-
-  - To run the entire test suite in parallel on multiple BrowserStack devices using BrowserStackLocal, use the following command:
-    ```sh
-    npm run bstack-local-parallel-devices
-    ```
 ## Generating Allure Reports
 
 - Generate Report using the following command: 
