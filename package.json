@@ -1,0 +1,36 @@
+{
+  "name": "duke-webdriverio-bootstrap",
+  "version": "1.0.0",
+  "description": "This project contains examples to run appium tests locally and on BrowserStack",
+  "devDependencies": {
+    "@wdio/allure-reporter": "^7.16.13",
+    "@wdio/appium-service": "^7.16.13",
+    "@wdio/browserstack-service": "^7.16.10",
+    "@wdio/cli": "^7.16.10",
+    "@wdio/local-runner": "^7.16.13",
+    "@wdio/mocha-framework": "^7.16.13",
+    "@wdio/spec-reporter": "^7.16.13",
+    "allure-commandline": "^2.13.8",
+    "appium": "^1.22.2",
+    "chai": "^4.3.4",
+    "lodash": "4.17.21"
+  },
+  "scripts": {
+    "bstack-single-android": "wdio run resources/wdio-bstack-single-android.conf.js",
+    "bstack-single-ios": "wdio run resources/wdio-bstack-single-ios.conf.js",
+    "bstack-parallel-devices": "wdio run resources/wdio-bstack-parallel-devices.conf.js",
+    "bstack-local": "wdio run resources/wdio-bstack-local.conf.js",
+    "bstack-local-parallel-devices": "wdio run resources/wdio-bstack-local-parallel-devices.conf.js",
+    "onprem": "wdio run resources/wdio-onprem.conf.js"
+  },
+  "keywords": [
+    "appium",
+    "browserstack",
+    "webdriverio"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browserstack-local": "^1.4.9"
+  }
+}
